@@ -1,5 +1,6 @@
 import Home from '@/views/home/index.vue'
 import My from '@/views/my/index.vue'
+import Login from '@/views/login/index.vue'
 
 const routes = [
   {
@@ -11,6 +12,11 @@ const routes = [
     path: '/my',
     name: 'My',
     component: My
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
   }
 ]
 
