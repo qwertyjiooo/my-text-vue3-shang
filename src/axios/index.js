@@ -1,4 +1,5 @@
 import axios from "axios";
+import { ElMessage } from "element-plus";
 
 const serve = axios.create({
     baseURL: "https://reqres.in/api",
@@ -20,9 +21,37 @@ serve.interceptors.request.use(
 
 serve.interceptors.response.use(
     response => {
-        return response.data
+        if (response.status === 200) {
+            ElMessage.success('成功');
+            return response.data;
+        }
     },
     error => {
+        if (error.response) {
+            switch (error.response.status) {
+                case 401:
+                    // 返回登录页面
+                    ElMessage.error('登录失效，请重新登录');
+                    window.location.href = '/login';
+                    break;
+                case 403:
+                    // 返回403页面
+                    ElMessage.error('没有权限，请联系管理员');
+                    break;
+                case 404:
+                    // 返回404页面
+                    ElMessage.error('请求的资源不存在');
+                    break;
+                default:
+                    // 返回错误页面
+                    ElMessage.error('未知错误');
+                    break;
+            }
+        } else if (error.request) {
+            ElMessage.error('网络请求失败，请检查网络连接');
+        } else {
+            ElMessage.error('请求出错');
+        }
         return Promise.reject(error)
     }
 )

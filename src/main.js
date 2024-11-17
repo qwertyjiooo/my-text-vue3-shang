@@ -3,6 +3,7 @@ import './style/tailwindcss/style.css'
 import App from './App.vue'
 import router from './router'
 import { createPinia } from 'pinia'
+import 'element-plus/theme-chalk/el-message.css';
 
 const app = createApp(App)
 app.use(router)
