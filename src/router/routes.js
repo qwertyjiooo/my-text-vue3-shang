@@ -3,6 +3,11 @@ import My from '@/views/my/index.vue'
 import Login from '@/views/login/index.vue'
 
 const routes = [
+  // 重定向到首页
+  {
+    path: '/home',
+    redirect: '/'
+  },
   {
     path: '/',
     name: 'Home',

@@ -1,8 +1,10 @@
 import axios from "axios";
 import { ElMessage } from "element-plus";
+import router from "@/router";
 
+const baseURL = import.meta.env.VITE_API_URL;
 const serve = axios.create({
-    baseURL: "https://reqres.in/api",
+    baseURL: baseURL,
     timeout: 5000,
 })
 
@@ -11,8 +13,12 @@ serve.interceptors.request.use(
         const token = localStorage.getItem('token');
         if (token) {
             config.headers['token'] = token;
+            return config;
+        } else {
+            localStorage.removeItem('token');
+            router.push('/login');
+            return Promise.reject('登录失效，请重新登录');
         }
-        return config;
     },
     error => {
         return Promise.reject(error)
@@ -21,7 +27,8 @@ serve.interceptors.request.use(
 
 serve.interceptors.response.use(
     response => {
-        if (response.status === 200) {
+        if (response) {
+            // if (response.status === 200) {
             ElMessage.success('成功');
             return response.data;
         }
@@ -32,7 +39,7 @@ serve.interceptors.response.use(
                 case 401:
                     // 返回登录页面
                     ElMessage.error('登录失效，请重新登录');
-                    window.location.href = '/login';
+                    router.push('/login');
                     break;
                 case 403:
                     // 返回403页面

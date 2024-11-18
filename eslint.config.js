@@ -9,6 +9,13 @@ export default [
             'public',
         ]
     },
+    {
+        env: {
+            browser: true,
+            node: true,
+            es2021: true,
+        }
+    },
 
     eslint.configs.recommended,
 
