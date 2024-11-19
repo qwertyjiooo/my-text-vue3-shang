@@ -1,32 +1,28 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import path from 'path'
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+import { resolve } from "path";
 
-import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import AutoImport from "unplugin-auto-import/vite";
+import Components from "unplugin-vue-components/vite";
+import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 
-const pathSrc = path.resolve(__dirname, 'src')
+const pathSrc = resolve(__dirname, "./src");
 
 export default defineConfig({
   resolve: {
     alias: {
-      '@': pathSrc,  // 确保指向 src 目录
+      "@": pathSrc, // 确保指向 src 目录
     },
   },
   plugins: [
     vue(),
     // 自动导入 Element Plus 组件和相关 API
     AutoImport({
-      resolvers: [
-        ElementPlusResolver(),
-      ],
+      resolvers: [ElementPlusResolver()],
     }),
     // 按需导入 Element Plus 组件
     Components({
-      resolvers: [
-        ElementPlusResolver(),
-      ],
+      resolvers: [ElementPlusResolver()],
     }),
   ],
   css: {
@@ -36,4 +32,9 @@ export default defineConfig({
       },
     },
   },
-})
+  server: {
+    proxy: {
+      
+    },
+  },
+});
