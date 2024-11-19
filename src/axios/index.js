@@ -13,12 +13,8 @@ serve.interceptors.request.use(
         const token = localStorage.getItem('token');
         if (token) {
             config.headers['token'] = token;
-            return config;
-        } else {
-            localStorage.removeItem('token');
-            router.push('/login');
-            return Promise.reject('登录失效，请重新登录');
         }
+        return config;
     },
     error => {
         return Promise.reject(error)
@@ -29,7 +25,6 @@ serve.interceptors.response.use(
     response => {
         if (response) {
             // if (response.status === 200) {
-            ElMessage.success('成功');
             return response.data;
         }
     },
@@ -57,7 +52,7 @@ serve.interceptors.response.use(
         } else if (error.request) {
             ElMessage.error('网络请求失败，请检查网络连接');
         } else {
-            ElMessage.error('请求出错');
+            ElMessage.error(error);
         }
         return Promise.reject(error)
     }

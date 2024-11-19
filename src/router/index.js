@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import routes from './routes'
+import { ElMessage } from 'element-plus';
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -17,6 +18,7 @@ router.beforeEach((to, from, next) => {
     if (token) {
       next();
     } else {
+      ElMessage.error('请先登录');
       next('/login');
       // next();
     }
