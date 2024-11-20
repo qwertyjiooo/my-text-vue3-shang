@@ -6,6 +6,9 @@ import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 
+import autoprefixer from 'autoprefixer'
+import tailwind from 'tailwindcss'
+
 const pathSrc = resolve(__dirname, "./src");
 
 export default defineConfig({
@@ -43,6 +46,9 @@ export default defineConfig({
     // preprocessorOptions 配置用于为 scss 文件提供额外的样式数据，
     // 这里通过 additionalData 引入了 Element Plus 的默认样式。
     // 这样可以在全局范围内使用 Element Plus 样式，而不必在每个组件中都引入。
+    postcss: {
+      plugins: [tailwind(), autoprefixer()],
+    },
     preprocessorOptions: {
       scss: {
         // 引入全局样式,这里引入了 element-plus 的样式
