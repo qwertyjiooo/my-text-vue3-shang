@@ -1,8 +1,8 @@
 <template>
     <el-button class="text-red-600" @click="aaa" :loading="loading">请求按钮</el-button>
-    <el-button class="text-red-600" @click="bbb" :loading="loading">退出登录</el-button>
+    <el-button class="text-red-600" @click="bbb" :loading="louging">退出登录</el-button>
     <!-- Math中提供的函数的功能 -->
-    <el-button class="text-red-600" @click="testMath" :loading="loading">Math</el-button>
+    <el-button class="text-red-600" @click="testMath" :loading="Mathing">Math</el-button>
     <ul>
         <li v-for="res in list" :key="res.id">
             <span>{{ res.first_name }}</span>
@@ -18,6 +18,8 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter();
 const loading = ref(false);  // 控制 loading 状态
+const louging = ref(false);  // 控制 loading 状态
+const Mathing = ref(false);  // 控制 loading 状态
 const list = ref([]);
 
 const aaa = async () => {
