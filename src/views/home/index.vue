@@ -2,7 +2,7 @@
     <el-button class="text-red-600" @click="aaa" :loading="loading">请求按钮</el-button>
     <el-button class="text-red-600" @click="bbb" :loading="louging">退出登录</el-button>
     <!-- Math中提供的函数的功能 -->
-    <el-button class="text-red-600" @click="testMath" :loading="Mathing">Math</el-button>
+    <el-button class="text-red-600" @click="testMath" :loading="Mathing">Math方法</el-button>
     <ul>
         <li v-for="res in list" :key="res.id">
             <span>{{ res.first_name }}</span>
