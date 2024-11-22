@@ -1,5 +1,5 @@
 <template>
-    <el-menu :default-active="activeIndex" style="height: 100%;">
+    <el-menu text-color = "black" active-text-color = "red" :default-active="activeIndex" style="height: 100%;">
         <template v-for="(item) in routesList" :key="item.path">
             <!-- 没有子路由 -->
             <el-menu-item v-if="!item.children" :index="item.path" @click="handleMenuClick(item.path)">
@@ -51,4 +51,5 @@ const handleMenuClick = (path) => {
 }
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+</style>

@@ -2,7 +2,7 @@
   <div class="common-layout">
     <el-container style="height: 100vh;">
       <el-scrollbar>
-        <el-aside width="200px">
+        <el-aside width="200px" style="height: 100%;">
           <MenuList></MenuList>
         </el-aside>
       </el-scrollbar>
@@ -22,4 +22,12 @@
 import MenuList from './menu.vue'
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.el-header {
+  background-color: azure;
+}
+
+.el-scrollbar__wrap--hidden-default {
+  background-color: azure;
+}
+</style>
