@@ -5,7 +5,7 @@ export const homeRouter = [
     name: '',
     redirect: "/home", // 作用是当用户访问根路径时,自动跳转到home页面
     meta: {
-      title: "Layout",
+      title: "",
       isShow: true,
     },
     children: [

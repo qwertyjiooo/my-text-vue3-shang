@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div style="margin-left: 40%;" class="w-40 bg-red-100">
+        <div>
             <h1>鼠标位置：</h1>
             <h1>x:{{ x }}</h1>
             <h1>y:{{ y }}</h1>

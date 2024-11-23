@@ -1,3 +1,11 @@
 /* 引入其他的样式文件到此处 */
 @import './tailwindcss/index.css';
 @import './reset/style.css';
+
+/* 定义全局样式 */
+
+:disFlex-cenTent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

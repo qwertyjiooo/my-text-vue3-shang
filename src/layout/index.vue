@@ -1,33 +1,16 @@
 <template>
-  <div class="common-layout">
-    <el-container style="height: 100vh;">
-      <el-scrollbar>
-        <el-aside width="200px" style="height: 100%;">
-          <MenuList></MenuList>
-        </el-aside>
-      </el-scrollbar>
-      <el-container>
-        <el-header>Header</el-header>
-        <el-scrollbar>
-          <el-main>
-            <router-view></router-view>
-          </el-main>
-        </el-scrollbar>
-      </el-container>
-    </el-container>
-  </div>
+  <el-container>
+    <!-- 侧边栏 -->
+    <MenuLi />
+    <MainLi />
+  </el-container>
 </template>
 
 <script setup>
-import MenuList from './menu.vue'
+import MenuLi from './menu/index.vue'
+import MainLi from './main/index.vue'
 </script>
 
 <style lang="less" scoped>
-.el-header {
-  background-color: azure;
-}
 
-.el-scrollbar__wrap--hidden-default {
-  background-color: azure;
-}
 </style>

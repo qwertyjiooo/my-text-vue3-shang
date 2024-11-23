@@ -5,7 +5,7 @@ export const com = [
     name: "Com",
     redirect: "/communication",
     meta: {
-      title: "组件传值",
+      title: "组件间通信",
       isShow: true,
     },
     children: [
