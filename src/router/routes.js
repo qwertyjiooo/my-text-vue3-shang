@@ -5,6 +5,7 @@ import { vueuse } from "./modules/vueuse";
 import { ceShi } from "./modules/ceShi";
 import { anyRoute } from "./modules/anyRoute";
 import { notFoundRouter } from "./modules/404";
+import { screenRouter } from "./modules/screen";
 
 export const routes = [
   ...loginRouter,
@@ -14,5 +15,5 @@ export const routes = [
   ...ceShi,
   ...notFoundRouter,
   ...anyRoute,
-  
+  ...screenRouter,
 ];

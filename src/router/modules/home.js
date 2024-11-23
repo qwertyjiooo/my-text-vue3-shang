@@ -15,7 +15,6 @@ export const homeRouter = [
         component: () => import("@/views/home/index.vue"),
         meta: {
           title: "首页",
-          isShow: true,
         },
       },
     ],
