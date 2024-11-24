@@ -14,9 +14,9 @@ import { ref, reactive, onMounted, onBeforeUnmount } from 'vue';
 const content = ref(null);
 
 // 更新尺寸的函数 
-const updateSize = (w = 1980, h = 1080) => {
-    const portWidth = window.innerWidth / w;
-    const portHeight = window.innerHeight / h;
+const updateSize = () => {
+    const portWidth = window.innerWidth / 1980;
+    const portHeight = window.innerHeight / 1080;
 
     const proportion = portWidth / portHeight;
     const wt = 100 / proportion;
