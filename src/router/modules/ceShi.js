@@ -5,7 +5,7 @@ export const ceShi = [
     name: "测试",
     redirect: "/my",
     meta: {
-      title: "我的",
+      title: "pinia",
       isShow: true,
     },
     children: [
@@ -14,7 +14,7 @@ export const ceShi = [
         name: "My",
         component: () => import("@/views/my/index.vue"),
         meta: {
-          title: "我的",
+          title: "简单传值",
         },
       },
     ],
