@@ -6,6 +6,7 @@ import { ceShi } from "./modules/ceShi";
 import { anyRoute } from "./modules/anyRoute";
 import { notFoundRouter } from "./modules/404";
 import { screenRouter } from "./modules/screen";
+import { elementPlus } from "./modules/elementPlus";
 
 export const routes = [
   ...loginRouter,
@@ -15,5 +16,6 @@ export const routes = [
   ...ceShi,
   ...notFoundRouter,
   ...anyRoute,
+  ...elementPlus,
   ...screenRouter,
 ];
