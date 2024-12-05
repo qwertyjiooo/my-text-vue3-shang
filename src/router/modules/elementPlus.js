@@ -25,6 +25,14 @@ export const elementPlus = [
           title: "breadcrumb-面包屑",
         },
       },
+      {
+        path: "/elementPlus/table",
+        name: "table",
+        component: () => import("@/views/elementPlus/table/index.vue"),
+        meta: {
+          title: "table-表格",
+        },
+      },
     ],
   },
 ];

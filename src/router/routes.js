@@ -7,6 +7,7 @@ import { anyRoute } from "./modules/anyRoute";
 import { notFoundRouter } from "./modules/404";
 import { screenRouter } from "./modules/screen";
 import { elementPlus } from "./modules/elementPlus";
+import { xfyunRouter } from "./modules/xfyun";
 
 export const routes = [
   ...loginRouter,
@@ -18,4 +19,5 @@ export const routes = [
   ...anyRoute,
   ...elementPlus,
   ...screenRouter,
+  ...xfyunRouter,
 ];
