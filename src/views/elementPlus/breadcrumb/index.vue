@@ -18,7 +18,6 @@ const route = useRoute()
 const routeList = route.matched
 
 onMounted(() => {
-    console.log(route)
 })
 </script>
 

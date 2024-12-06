@@ -9,11 +9,9 @@ import { defineProps, defineEmits } from 'vue';
 const props = defineProps(['msg2'])
 const emit = defineEmits(['update:msg2']);
 const updateName = (e) => {
-    console.log(e);
     // emit('update:msg2', e.target.value);
 }
 const aaa = () => {
-    console.log(props);
 }
 
 </script>

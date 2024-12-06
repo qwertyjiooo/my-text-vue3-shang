@@ -1,18 +1,6 @@
-// src/stores/userStore.js
-import { defineStore } from 'pinia'
-
-export const useUserStore = defineStore('user', {
-    state: () => ({
-        name: 'John Doe',
-        age: 30,
-    }),
-    actions: {
-        setName(newName) {
-            this.name = newName
-        },
-        setAge(newAge
-        ) {
-            this.age = newAge
-        }
-    }
-})
+//仓库大仓库
+import { createPinia } from 'pinia'
+//创建大仓库
+const pinia = createPinia()
+//对外暴露：入口文件需要安装仓库
+export default pinia

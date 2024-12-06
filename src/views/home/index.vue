@@ -27,9 +27,7 @@ const aaa = async () => {
         loading.value = true;  // 开始 loading
         const res = await api.ceShi()
         list.value = res.data
-        console.log(res.data)
     } catch (error) {
-        console.log(error);
     } finally {
         loading.value = false;  // 结束 loading
     }
@@ -39,7 +37,6 @@ const bbb = () => {
     router.push('/login')
 }
 const testMath = () => {
-    console.log(Math)
 }
 </script>
 
