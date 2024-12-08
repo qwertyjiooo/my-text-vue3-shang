@@ -1,33 +1,36 @@
 <template>
     <div class="table">
-        <table class="table-content" border="1">
+        <table class="table-content">
             <colgroup class="table-colgroup">
-                <col v-for="(iitem, index) in column.label" :key="iitem" class="table-col" 
-                :width="column.width ? column.width[index]:''" />
+                <col v-for="(item, index) in column.label" :key="index" class="table-col"
+                    :width="column.width ? column.width[index] : ''" />
             </colgroup>
-            <tr>
-                <th v-for="(item, index) in column.label" :key="index">
-                    <div class="table-text table-head">
-                        {{ item }}
-                    </div>
-                </th>
-            </tr>
-            <!-- 动态设置ref -->
-            <tr v-for="(item, index) in sortedData" :key="index" @mousemove="handleMouseover(index)"
-                @mouseleave="handleMouseleave" :class="{ 'table-row-hover': index === hoverIndex || hoverIndex2 }">
-                <td v-for="(res, i) in item" :key="i">
-                    <div class="table-text table-body">
-                        {{ res }}
-                    </div>
-                </td>
-            </tr>
+            <thead class="table-head">
+                <tr>
+                    <th v-for="(item, index) in column.label" :key="index">
+                        <div class="table-text table-head">
+                            {{ item }}
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="table-body">
+                <tr v-for="(item, index) in sortedData" :key="index" @mousemove="handleMouseover(index)"
+                    @mouseleave="handleMouseleave" :class="{ 'table-row-hover': index === hoverIndex || hoverIndex2 }">
+                    <td v-for="(res, i) in item" :key="i">
+                        <div class="table-text table-body">
+                            {{ res }}
+                        </div>
+                    </td>
+                </tr>
+                <slot></slot>
+            </tbody>
         </table>
-        <slot></slot>
     </div>
 </template>
 
 <script setup>
-import { ref, defineProps, provide, computed } from 'vue'
+import { ref, provide, computed } from 'vue'
 const props = defineProps({
     data: {
         type: Array,
@@ -84,9 +87,11 @@ const handleMouseleave = () => {
     font-size: 14px;
     line-height: 23px;
 }
+
 .table-content {
     width: 100%;
 }
+
 .table-colgroup {
     display: table-column-group;
     flex: 1;

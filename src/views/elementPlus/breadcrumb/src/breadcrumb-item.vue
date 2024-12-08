@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-import { defineProps, inject} from 'vue'
+import { inject} from 'vue'
 // 引入路由
 import { useRouter } from 'vue-router'
 // 获取路由实例

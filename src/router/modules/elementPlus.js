@@ -33,6 +33,14 @@ export const elementPlus = [
           title: "table-表格",
         },
       },
+      {
+        path: "/elementPlus/tableTest",
+        name: "tableTest",
+        component: () => import("@/views/elementPlus/tableTest/index.vue"),
+        meta: {
+          title: "table-表格",
+        },
+      },
     ],
   },
 ];
