@@ -18,7 +18,7 @@
         <el-table-column prop="age" label="年龄" />
         <el-table-column fixed="right" label="Operations" min-width="120">
             <template #default>
-                <el-button link type="primary" size="small" @click="handleClick">
+                <el-button link type="primary" size="small">
                     Detail
                 </el-button>
                 <el-button link type="primary" size="small">Edit</el-button>

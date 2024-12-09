@@ -1,63 +1,51 @@
 <template>
-    <div class="table-column">
-        <slot name="scope"></slot>
+    <div class="tableColumn">
+        <div v-show="false">
+            <slot></slot>
+        </div>
     </div>
 </template>
 
 <script setup>
-import { inject, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
+import { useTableStore } from '@/store/modules/table'
+
+const tableStore = useTableStore()
 
 const props = defineProps({
     prop: {
         type: String,
         default: ''
     },
-    label: {
+    lable: {
         type: String,
         default: ''
     },
-    width: {
-        type: String,
-        default: ''
-    },
-    align: {
-        type: String,
-        default: ''
-    }
 })
+
+const slots = useSlots()  // 获取插槽内容
+const slotElements = ref([])  // 存储插槽元素
+const slotNames = () => {
+    // 获取插槽内容并存储到数组
+    if (!slots.default) return
+    slotElements.value = Array.from(slots.default())
+    tableStore.setSlotData(slotElements.value)
+
+}
+
 onMounted(() => {
-    const label = inject('column')
-    label.value.label.push(props.label)
-    label.value.prop.push(props.prop)
-    label.value.width.push(props.width)
+    tableStore.setColumn(props)
+    slotNames()
 })
 
 </script>
 
-<style lang="less" scoped>
-.table-column {
-    flex: 1;
+<style lang="less" scoped></style>
 
-    tr {
-        display: flex;
-        flex-direction: column;
-        text-align: left;
-    }
-
-    th {
-        padding: 8px 0;
-        background: #eeeeee;
-        font-weight: 500;
-        // 底部边框
-        border-bottom: 1px solid #e0e0e0;
-    }
-
-    td {
-        display: flex;
-        align-items: center;
-        height: 40px;
-        padding: 8px 0;
-        border-bottom: 1px solid #e0e0e0;
-    }
-}
-</style>
+<!--
+ * @Author: shenxh
+ * @Date: 2022-05-18 15:32:51
+ * @LastEditors: shenxh
+ * @LastEditTime: 2022-05-18 15:32:51
+ * @Description: 表格列
+-->

@@ -1,20 +1,35 @@
-import { defineStore } from 'pinia'
+import { defineStore } from "pinia";
 
-export const useTableStore = defineStore('table', {
+export const useTableStore = defineStore("table", {
   state: () => ({
     tableData: [],
-    table: [],
+    prop: [],
     lable: [],
+    slotDsata: [],
   }),
   getters: {
-    setTableData: (state) => state.tableData,
+    // 处理tableData 数据
+    filteredData: (state) => {
+      return state.tableData.map((item) => {
+        return state.prop.reduce((acc, key) => {
+          if (key in item) {
+            acc[key] = item[key];
+          }
+          return acc;
+        }, {});
+      });
+    },
   },
   actions: {
-    setTableDataAction(data) {
-      this.tableData = data
+    setTable(data) {
+      this.tableData = data;
     },
-    setTableAction(lable) {
-      this.lable.push(lable)
-    }
-  }
-})
+    setColumn(data) {
+      this.lable.push(data.lable);
+      if (data.prop) this.prop.push(data.prop);
+    },
+    setSlotData(data) {
+      this.slotDsata = data;
+    },
+  },
+});
