@@ -23,11 +23,8 @@ serve.interceptors.request.use(
 
 serve.interceptors.response.use(
     response => {
-        if (response) {
-            // if (response.status === 200) {
-            ElMessage.success('成功');
-            return response.data;
-        }
+        if (response.status !== 200) return Promise.reject(response.data);
+        return response.data;
     },
     error => {
         if (error.response) {
