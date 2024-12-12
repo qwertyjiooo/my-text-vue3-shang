@@ -6,8 +6,8 @@ import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 
-import autoprefixer from 'autoprefixer'
-import tailwind from 'tailwindcss'
+import autoprefixer from "autoprefixer";
+import tailwind from "tailwindcss";
 
 const pathSrc = resolve(__dirname, "./src");
 
@@ -33,12 +33,15 @@ export default defineConfig({
     // 自动导入 Element Plus 组件和相关 API，作用是减少手动导入的代码量
     AutoImport({
       // imports 的作用是配置需要自动导入的 API，这里配置了 Vue、Vue Router、Pinia 和 @vueuse/core
-      imports: ['vue', 'vue-router', 'pinia', '@vueuse/core'],
+      imports: ["vue", "vue-router", "pinia", "@vueuse/core"],
       resolvers: [ElementPlusResolver()],
     }),
     // 按需导入 Element Plus 组件
     Components({
       resolvers: [ElementPlusResolver()],
+      dirs: ["src/components", "src/**/components"],
+      // 在 vue 模板中启用自动导入
+      vueTemplate: true,
     }),
   ],
   // 配置 CSS 预处理器，作用是解决样式冲突问题
@@ -72,12 +75,6 @@ export default defineConfig({
   },
   // optimizeDeps 用于配置 Vite 在构建时需要优化的依赖库，确保这些库会被提前处理，从而提高开发构建和启动的速度。
   optimizeDeps: {
-    include: [
-      'vue',
-      'vue-router',
-      'pinia',
-      'axios',
-      '@vueuse/core',
-    ]
-  }
+    include: ["vue", "vue-router", "pinia", "axios", "@vueuse/core"],
+  },
 });

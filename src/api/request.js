@@ -1,15 +1,21 @@
 import serve from '../axios'
 
-const handleRequest = (requestPromise) => {
-    return requestPromise
-        .then(res => res)
-        .catch(err => {
-            throw err;
-        });
+export const get = async (url, params) => {
+    try {
+        const res = await serve.get(url, { params });
+        return res;
+    } catch (error) {
+        console.error('get error', error);
+        throw error;
+    }
 };
 
-const get = (url, params) => handleRequest(serve.get(url, { params }));
-
-const post = (url, params) => handleRequest(serve.post(url, params));
-
-export { get, post }
+export const post = async (url, params) => {
+    try {
+        const res = await serve.post(url, params);
+        return res;
+    } catch (error) {
+        console.error('post error', error);
+        throw error;
+    }
+}

@@ -1,10 +1,18 @@
 {
+    // 作用是告诉VSCode，在项目中，@符号代表src目录
     "compilerOptions": {
         "baseUrl": ".",
         "paths": {
             "@/*": [
-                "./src/*"
+                "src/*"
             ]
         }
-    }
+    },
+    // 作用是告诉VSCode，在项目中，src目录下的所有.js、.ts、.tsx、.vue文件都是需要被识别的
+    "include": [
+        "src/**/*js",
+        "src/**/*.ts",
+        "src/**/*.tsx",
+        "src/**/*.vue",
+    ],
 }

@@ -22,15 +22,12 @@ const louging = ref(false);  // 控制 loading 状态
 const Mathing = ref(false);  // 控制 loading 状态
 const list = ref([]);
 
-const aaa = async () => {
-    try {
-        loading.value = true;  // 开始 loading
-        const res = await api.ceShi()
+const aaa = () => {
+    loading.value = true;
+    api.ceShi().then(res => {
         list.value = res.data
-    } catch (error) {
-    } finally {
-        loading.value = false;  // 结束 loading
-    }
+        loading.value = false;
+    })
 }
 const bbb = () => {
     localStorage.removeItem('token')
