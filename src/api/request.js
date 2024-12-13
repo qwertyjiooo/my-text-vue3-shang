@@ -17,3 +17,8 @@ export const post = async (url, params) => {
         return Promise.reject(error);
     }
 }
+
+// 建议在页面中使用
+/**
+ * aaaa(data).then(res => {}).catch(err => {})
+ */
