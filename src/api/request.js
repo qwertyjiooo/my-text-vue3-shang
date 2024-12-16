@@ -22,3 +22,26 @@ export const post = async (url, params) => {
 /**
  * aaaa(data).then(res => {}).catch(err => {})
  */
+
+// export const get = (url, data) => {
+//     return serve.get(url, { params: data })
+//         .then(res => {
+//             return res
+//         })
+//         .catch(err => {
+//             console.log('get 请求失败');
+//             throw err
+//         })
+
+// }
+
+// export const post = (url, data) => {
+//     return serve.post(url, data)
+//         .then(res => {
+//             return res
+//         })
+//         .catch(err => {
+//             console.log('post 请求失败');
+//             throw err
+//         })
+// }
