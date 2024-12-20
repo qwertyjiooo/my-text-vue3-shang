@@ -8,6 +8,7 @@ import { notFoundRouter } from "./modules/404";
 import { screenRouter } from "./modules/screen";
 import { elementPlus } from "./modules/elementPlus";
 import { xfyunRouter } from "./modules/xfyun";
+import { Quilss } from "./modules/Quilss";
 
 export const routes = [
   ...loginRouter,
@@ -20,4 +21,5 @@ export const routes = [
   ...elementPlus,
   ...screenRouter,
   ...xfyunRouter,
+  ...Quilss
 ];
