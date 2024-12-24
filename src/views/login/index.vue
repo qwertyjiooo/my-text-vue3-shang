@@ -34,7 +34,7 @@
                     <br>
                     <el-input v-model="list.password" placeholder="请再次输入密码"></el-input>
                     <br>
-                    <el-button type="primary">注册</el-button>
+                    <el-button type="primary" @click="reSaveToken">注册</el-button>
                 </div>
                 <div class="login-input">
                     <div style="font-size: 26px;font-weight: 700;">login</div>
@@ -43,7 +43,7 @@
                     <br>
                     <el-input v-model="list.password" placeholder="请输入密码"></el-input>
                     <br>
-                    <el-button type="primary">登录</el-button>
+                    <el-button type="primary" @click="saveToken">登录</el-button>
                 </div>
             </div>
         </div>
@@ -74,6 +74,12 @@ const saveToken = () => {
     localStorage.setItem('token', '123456')
     ElMessage.success('登录成功')
     router.push('/home')
+}
+const reSaveToken = () => {
+    ElMessage.success('注册成功')
+    setTimeout(() => {
+        isHover.value = 1
+    }, 1000)
 }
 </script>
 
