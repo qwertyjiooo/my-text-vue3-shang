@@ -12,7 +12,7 @@
                         <br>
                         <div style="color: #fff;font-size: 16px;">已经有账户了？</div>
                         <br>
-                        <el-button @click="isLogin">去登录</el-button>
+                        <el-button class="box" @click="isLogin">去登录</el-button>
                     </div>
                     <div class="register-title-button"
                         :class="{ 'isRegister-title-button': isHover === 2, 'isLoginRegister': isHover === 1 }">
@@ -20,30 +20,30 @@
                         <br>
                         <div style="color: #fff;font-size: 16px;">没有账户？</div>
                         <br>
-                        <el-button @click="isRegister">去注册</el-button>
+                        <el-button class="box" @click="isRegister">去注册</el-button>
                     </div>
                 </div>
             </div>
             <div style="display: flex;height: 100%;">
-                <div class="login-input">
+                <div style="opacity: 0;" class="login-input" :class="{ 'login-input-isLogin': isHover === 1, 'login-input-isLogin-login': isHover === 2}">
                     <div style="font-size: 26px;font-weight: 700;">register</div>
                     <br>
-                    <el-input v-model="list.username" placeholder="请输入用户名"></el-input>
+                    <el-input class="box" v-model="list.username" placeholder="请输入用户名"></el-input>
                     <br>
-                    <el-input v-model="list.password" placeholder="请输入密码"></el-input>
+                    <el-input class="box" v-model="list.password" placeholder="请输入密码"></el-input>
                     <br>
-                    <el-input v-model="list.password" placeholder="请再次输入密码"></el-input>
+                    <el-input class="box" v-model="list.password" placeholder="请再次输入密码"></el-input>
                     <br>
-                    <el-button type="primary" @click="reSaveToken">注册</el-button>
+                    <el-button class="box" @click="reSaveToken">注册</el-button>
                 </div>
-                <div class="login-input">
+                <div class="login-input" :class="{ 'login-input-isLogin': isHover === 2, 'login-input-isLogin-login': isHover === 1}">
                     <div style="font-size: 26px;font-weight: 700;">login</div>
                     <br>
-                    <el-input v-model="list.username" placeholder="请输入用户名"></el-input>
+                    <el-input class="box" v-model="list.username" placeholder="请输入用户名"></el-input>
                     <br>
-                    <el-input v-model="list.password" placeholder="请输入密码"></el-input>
+                    <el-input class="box" v-model="list.password" placeholder="请输入密码"></el-input>
                     <br>
-                    <el-button type="primary" @click="saveToken">登录</el-button>
+                    <el-button class="box" @click="saveToken">登录</el-button>
                 </div>
             </div>
         </div>
@@ -87,14 +87,24 @@ const reSaveToken = () => {
 .login {
     width: 100vw;
     height: 100vh;
-    background-color: orange;
+    // background-color: orange;
+    background-image: url('@/assets/image/204305zm0qrsvv0cd7gvsc.jpg');
+    // 设置 背景图片为平铺
+    background-size: cover; // 背景图片大小,cover 完全覆盖
+    background-position: center; // 背景图片位置,center 居中
     padding-top: 150px;
-
+    .box {
+        background-color: rgba(255, 255, 255, 0);
+        color: #fff;
+    }
     .login-box {
         width: 700px;
         height: 400px;
         margin: 0 auto;
-        background-color: #fff;
+        background-color: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        /* 给容器增加阴影 */
+        backdrop-filter: blur(5px);
         display: flex;
         flex-direction: column;
         border-radius: 10px;
@@ -105,7 +115,7 @@ const reSaveToken = () => {
             position: absolute;
             width: 50%;
             height: 100%;
-            background-color: #7397ea;
+            background-color: rgba(229, 62, 48, 0.3);
             border-radius: 10px 100px 100px 10px;
             z-index: 2;
 
@@ -319,5 +329,50 @@ const reSaveToken = () => {
             transform: translateY(-50%);
         }
     }
+
+    // --------------------------------------------------
+    // 点击按钮时 登录 和 注册框 的 变化
+    .login-input-isLogin {
+        animation: login-input 1s forwards;
+    }
+
+    @keyframes login-input {
+        0% {
+            opacity: 1;
+        }
+
+        25% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+
+    // 点击按钮时 注册/登录框 的 变化
+    .login-input-isLogin-login {
+        animation: login-input-login 1s forwards;
+    }
+
+    @keyframes login-input-login {
+        0% {
+            opacity: 0;
+        }
+
+        75% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+}
+/deep/ .el-input__wrapper {
+    background-color: transparent;
+}
+/deep/ .el-input__inner {
+    color: #fff;
 }
 </style>

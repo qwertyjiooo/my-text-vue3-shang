@@ -1,11 +1,11 @@
 export const xfyunRouter = [
   {
-    path: "/",
+    path: "/xFYun",
     component: () => import("@/layout/index.vue"),
-    name: "",
+    name: "xFYun",
     redirect: "/xfyun", // 作用是当用户访问根路径时,自动跳转到home页面
     meta: {
-      title: "",
+      title: "讯飞大模型",
       isShow: true,
     },
     children: [

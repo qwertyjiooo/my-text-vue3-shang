@@ -2,7 +2,7 @@ export const Quilss = [
     {
       path: "/Quilss",
       component: () => import("@/layout/index.vue"),
-      name: "elementPlus",
+      name: "Quilss",
       redirect: "/Quilss/quil",
       meta: {
         title: "富文本试用",
