@@ -38,6 +38,7 @@ export default defineConfig({
     }),
     // 按需导入 Element Plus 组件
     Components({
+      dts: true, // 自动生成 .d.ts 类型文件
       resolvers: [ElementPlusResolver()],
       dirs: ["src/components", "src/**/components"],
       // 在 vue 模板中启用自动导入
@@ -62,19 +63,40 @@ export default defineConfig({
   // 作用是解决开发环境跨域问题
   // 配置开发服务器,设置代理,解决跨域问题,这里设置的是代理到本地 8080 端口
   server: {
-    proxy: {
-      // // /api 开头的请求代理到 http://localhost:8080
-      // "/api": {
-      //   target: "http://localhost:8080",
-      //   // 是否改变请求源,这里设置为 true
-      //   changeOrigin: true,
-      //   // 重写请求路径,将 /api 替换为空字符串
-      //   rewrite: (path) => path.replace(/^\/api/, ""),
-      // },
-    },
+    host: '0.0.0.0',
+    port: 3000,
+    open: true,
+    // proxy: {
+    //   '/api': {
+    //     target: env.VITE_API_URL,
+    //     changeOrigin: true,
+    //     rewrite: (path) => path.replace(/^\/api/, '')
+    //   }
+    // },
   },
   // optimizeDeps 用于配置 Vite 在构建时需要优化的依赖库，确保这些库会被提前处理，从而提高开发构建和启动的速度。
   optimizeDeps: {
     include: ["vue", "vue-router", "pinia", "axios", "@vueuse/core"],
+  },
+  build: {
+    target: 'modules', // 打包成 es2015 模块
+    outDir: 'dist', // 输出目录
+    assetsDir: 'assets', // 静态资源目录
+    // cssCodeSplit: true, // 开启 css 代码分割
+    // sourcemap: false, // 关闭 sourcemap
+    rollupOptions: { // 构建配置
+      minify: 'terser', // 压缩代码,混淆器，terser构建后文件体积更小
+      output: {
+        manualChunks(id) { // 按需加载
+          if (id.includes('node_modules')) {// 第三方库,按需加载
+            return id.toString().split('node_modules/')[1].split('/')[0].toString(); // 按模块分割
+          }
+        },
+        // 资源文件名格式
+        chunkFileNames: 'assets/js/[name]-[hash].js', // 代码分割文件名
+        entryFileNames: 'assets/js/[name]-[hash].js', // 入口文件名
+        assetFileNames: 'assets/[ext]/[name]-[hash].[ext]', // 资源文件名
+      }
+    }
   },
 });
