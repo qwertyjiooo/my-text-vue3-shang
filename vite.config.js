@@ -71,6 +71,11 @@ export default defineConfig({
       //   // 重写请求路径,将 /api 替换为空字符串
       //   rewrite: (path) => path.replace(/^\/api/, ""),
       // },
+      '/users': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/users/, ''),
+      }
     },
   },
   // optimizeDeps 用于配置 Vite 在构建时需要优化的依赖库，确保这些库会被提前处理，从而提高开发构建和启动的速度。

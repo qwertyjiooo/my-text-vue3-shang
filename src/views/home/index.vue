@@ -3,6 +3,7 @@
     <el-button class="text-red-600" @click="bbb" :loading="louging">退出登录</el-button>
     <!-- Math中提供的函数的功能 -->
     <el-button class="text-red-600" @click="testMath" :loading="Mathing">Math方法</el-button>
+    <el-button class="text-red-600" @click="lkServer">server</el-button>
     <ul>
         <li v-for="res in list" :key="res.id">
             <span>{{ res.first_name }}</span>
@@ -15,6 +16,8 @@
 import { ref } from 'vue'
 import { api } from '../../api/index'
 import { useRouter } from 'vue-router'
+// 测试 node 服务 // 引入 axios
+import axios from 'axios'
 
 const router = useRouter();
 const loading = ref(false);  // 控制 loading 状态
@@ -34,6 +37,15 @@ const bbb = () => {
     router.push('/login')
 }
 const testMath = () => {
+}
+
+// 测试 node 服务
+const lkServer = () => {
+    axios.get('/users').then(res => {
+        console.log(res.data);
+    }).catch(err => {
+        console.log(err);
+    })
 }
 </script>
 

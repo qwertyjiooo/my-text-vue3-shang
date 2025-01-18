@@ -369,10 +369,10 @@ const reSaveToken = () => {
         }
     }
 }
-/deep/ .el-input__wrapper {
+:deep(.el-input__wrapper) {
     background-color: transparent;
 }
-/deep/ .el-input__inner {
+:deep(.el-input__inner) {
     color: #fff;
 }
 </style>

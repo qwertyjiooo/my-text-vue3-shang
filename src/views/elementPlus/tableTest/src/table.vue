@@ -18,9 +18,9 @@
                 </tr>
             </tbody>
         </table>
-        <td>
+        <!-- <td>
             <slot></slot>
-        </td>
+        </td> -->
     </div>
 </template>
 
