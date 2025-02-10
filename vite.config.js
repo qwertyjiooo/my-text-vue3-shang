@@ -63,18 +63,6 @@ export default defineConfig({
   // 作用是解决开发环境跨域问题
   // 配置开发服务器,设置代理,解决跨域问题,这里设置的是代理到本地 8080 端口
   server: {
-<<<<<<< HEAD
-    host: '0.0.0.0',
-    port: 3000,
-    open: true,
-    // proxy: {
-    //   '/api': {
-    //     target: env.VITE_API_URL,
-    //     changeOrigin: true,
-    //     rewrite: (path) => path.replace(/^\/api/, '')
-    //   }
-    // },
-=======
     proxy: {
       // // /api 开头的请求代理到 http://localhost:8080
       // "/api": {
@@ -85,7 +73,6 @@ export default defineConfig({
       //   rewrite: (path) => path.replace(/^\/api/, ""),
       // },
     },
->>>>>>> parent of f7e01ae (111)
   },
   // optimizeDeps 用于配置 Vite 在构建时需要优化的依赖库，确保这些库会被提前处理，从而提高开发构建和启动的速度。
   optimizeDeps: {
