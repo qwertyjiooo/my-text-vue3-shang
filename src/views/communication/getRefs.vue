@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-import { ref} from 'vue'
+import { defineExpose, ref} from 'vue'
 const aaa = ref('')
 const someMethod = () => {
     aaa.value = '子组件方法被调用了'
